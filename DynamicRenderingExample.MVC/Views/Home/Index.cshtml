@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+@model DynamicRenderingExample.MVC.Models.Inputs
+
+<div class="jumbotron">
+    <h1>Dynamic Rendering Example</h1>
+    <p class="lead">This project is an example showing a way to render elements without knowing the type of the object to render beforehand</p>
+    <p class="lead">This allows for creation of rendering elements troughout the application life without having to add each newly created element in each and every page that uses it</p>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        @foreach (var input in Model.InputList)
+        {
+            @Html.Partial($"_{input.GetType().Name}Partial", input)
+        }
+    </div>
+</div>
